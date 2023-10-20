@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *next;
+};
+struct node *create(struct node *list)
+{
+struct node *temp,*newnode;
+int i,n;
+printf("enter limit");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+newnode=(struct node*)malloc(sizeof(struct node));
+newnode->next=NULL;
+printf("enter value");
+scanf("%d",&newnode->data);
+if(list==NULL)
+{
+list=temp=newnode;
+}
+else
+{
+temp->next=newnode;
+temp=newnode;
+}
+}
+return list;
+}
+void disp(struct node *list)
+{
+struct node *temp;
+for(temp=list;temp!=NULL;temp=temp->next)
+{
+printf("%d\t",temp->data);
+}
+}
+struct node *reverse(struct node *list)
+{
+struct node *t1,*t2,*t3;
+t1=list;
+t2=t1->next;
+t3=t2->next;
+t1->next=NULL;
+while(t3!=NULL)
+{
+t2->next=t1;
+t1=t2;
+t2=t3;
+t3=t3->next;
+}
+t2->next=t1;
+return t2;
+}
+
+int main()
+{
+struct node *list=NULL;
+int ch;
+
+do{
+printf("\n 1-create\n 2-disp\n3-reverse  \n enter choice");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:list=create(list);
+break;
+case 2:disp(list);
+break;
+case 3:printf("reverse linked list");
+list=reverse(list);
+disp(list);
+}
+}while(ch<3);
+
+}
