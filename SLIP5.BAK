@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *next;
+};
+struct node *create(struct node *list,int num)
+{
+struct node *newnode;
+newnode=(struct node*)malloc(sizeof(struct node));
+newnode->data=num%10;
+num=num/10;
+newnode->next=list;
+list=newnode;
+return list;
+}
+void disp(struct node *list)
+{
+struct node *temp;
+for(temp=list;temp!=NULL;temp=temp->next)
+{
+printf("%d",temp->data);
+{
+if(temp!=NULL)
+printf(",");
+}
+}
+ }
+ int main()
+ {
+    struct node *list=NULL;
+    int num;
+    printf("enter no");
+    scanf("%d",&num);
+ list=create(list,num);
+ disp(list);
+ getch();
+ return 0;
+ }
+
+
